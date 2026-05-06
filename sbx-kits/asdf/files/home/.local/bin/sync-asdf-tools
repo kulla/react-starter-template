@@ -1,0 +1,43 @@
+# sync-asdf-tool-versions
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=asdf-utils.sh
+source "$SCRIPT_DIR/asdf-utils.sh"
+
+TOOL_VERSIONS_FILE="$WORKSPACE_DIR/.tool-versions"
+
+sync_tool_versions() {
+  local plugin
+  local version
+
+  [[ -f "$TOOL_VERSIONS_FILE" ]] || fail "Missing file: $TOOL_VERSIONS_FILE"
+
+  while read -r plugin version _; do
+    [[ -n "${plugin:-}" ]] || continue
+    [[ "$plugin" == \#* ]] && continue
+    [[ -n "${version:-}" ]] || fail "Missing version for plugin: $plugin"
+
+    install_tool "$plugin" "$version"
+  done < "$TOOL_VERSIONS_FILE"
+}
+
+install_tool() {
+  local plugin="$1"
+  local version="$2"
+
+  if asdf plugin list | grep -Fxq "$plugin"; then
+    log_info "Updating plugin: $plugin"
+    asdf plugin update "$plugin"
+  else
+    log_info "Adding plugin: $plugin"
+    asdf plugin add "$plugin"
+  fi
+
+  log_info "Installing $plugin $version"
+  asdf install "$plugin" "$version"
+}
+
+require_cmd asdf
+sync_tool_versions

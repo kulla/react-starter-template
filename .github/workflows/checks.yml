@@ -14,7 +14,7 @@ jobs:
       - uses: ./.github/actions/setup-bun
         with:
           install: 'false'
-      - run: bun audit
+      - run: ./scripts/audit.sh
 
   build:
     runs-on: ubuntu-latest

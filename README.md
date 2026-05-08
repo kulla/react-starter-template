@@ -1,6 +1,6 @@
-# Bun React template repository
+# React SPA starter template
 
-This is a template repository for `React` and `TypeScript` built with Bun. It uses `bun` instead of Node.js and `biome` instead of `prettier / eslint` for better performance.
+This is a starter template for a React single-page application built with `TypeScript` and Bun. It uses `bun` instead of Node.js and `biome` instead of `prettier / eslint` for better performance.
 
 ## Start a new project from this template
 

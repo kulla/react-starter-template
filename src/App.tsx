@@ -1,8 +1,8 @@
 export default function App() {
   return (
     <main>
-      <h1>Bun with React</h1>
-      <p>Start building amazing things with Bun.</p>
+      <h1>React SPA Starter template</h1>
+      <p>Build your SPA here...</p>
     </main>
   )
 }

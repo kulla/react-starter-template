@@ -10,5 +10,6 @@ jobs:
     steps:
       - uses: kulla/sync-to-gitlab@v1
         with:
+          repository_name: rsbuild-react-starter-template
           owner: stephan_kulla
           token: ${{ secrets.GITLAB_TOKEN }}

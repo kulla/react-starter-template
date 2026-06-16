@@ -7,7 +7,7 @@
   "scripts": {
     "build": "bun build src/index.html --outdir dist",
     "check": "bun run check:format && bun run check:tsc",
-    "check:format": "biome check --write",
+    "check:format": "biome check .",
     "check:tsc": "tsc --noEmit",
     "dev": "bun --hot src/index.html",
     "format": "biome format --write",

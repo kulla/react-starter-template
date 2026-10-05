@@ -15,7 +15,7 @@
     "fix:lint": "oxlint --fix",
     "dev": "bun --hot src/index.html",
     "preview": "bun run build && bun dist/index.html",
-    "test": "bun test"
+    "test:unit": "bun test"
   },
   "dependencies": {
     "react": "^19.3.0",
